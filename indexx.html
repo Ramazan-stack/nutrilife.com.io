@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriLife - Sağlıklı Beslenme</title>
+    <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>NutriLife</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="indexx.html">Ana Sayfa</a></li>
+                <li><a href="beslenme_programlari.html">Beslenme Programları</a></li>
+                <li><a href="makaleler.html">Makaleler</a></li>
+                <li><a href="hesaplama_araclari.html">Hesaplama Araçları</a></li>
+                <li><a href="saglikli_tarifler.html">Sağlıklı Tarifler</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-overlay-box">
+              <h2>Hayalindeki Sağlıklı Yaşama Birlikte Ulaşalım!</h2>
+              <p>
+                NutriLife ile sağlıklı beslenme hiç bu kadar kolay olmamıştı. 
+                Bilimsel temelli öneriler, diyet programları ve ilham veren tariflerle enerjini yükselt, kendine yatırım yap!
+              </p>
+            </div>
+          </section>
+        <section class="features">
+            <h2>Öne Çıkan Özellikler</h2>
+            <div class="feature-box">
+                <div class="feature">
+                    <img src="img/diyet.png" alt="Beslenme Planı">
+                    <a href="beslenme_programlari.html" class="btn">Beslenme Programları</a>
+                </div>
+                <div class="feature">
+                    <img src="img/tarif.png" alt="Sağlıklı Tarifler">
+                    <a href="saglikli_tarifler.html" class="btn">Sağlıklı Tarifler</a>
+                </div>
+                <div class="feature">
+                    <img src="img/tartı.png" alt="Vücut Kitle Endeksi">
+                    <a href="hesaplama_araclari.html" class="btn">Vücut Kitle Endeksi</a>
+                </div>
+            </div>
+            <section class="articles">
+                <h2>Son Makaleler</h2>
+                <div class="article-slider-container">
+                    <button class="slider-btn left-btn" onclick="moveSlider(-1)">&#9664;</button>
+                    <div class="article-slider" id="random-articles-slider">
+                    </div>
+                    <button class="slider-btn right-btn" onclick="moveSlider(1)">&#9654;</button>
+                </div>
+            </section>
+            
+            <script>
+                const slider = document.querySelector('.article-slider');
+                const articleWidth = 300;
+                const gapWidth = 20; 
+                const scrollStep = articleWidth + gapWidth + 60 ; 
+                let scrollAmount = 0;
+            
+                function moveSlider(direction) {
+                    const maxScroll = slider.scrollWidth - slider.clientWidth;
+            
+                    scrollAmount += direction * scrollStep;
+            
+                    
+                    if (scrollAmount < 0) {
+                        scrollAmount = 0;
+                    } else if (scrollAmount > maxScroll) {
+                        scrollAmount = maxScroll;
+                    }
+            
+                    slider.scrollTo({
+                        left: scrollAmount,
+                        behavior: 'smooth',
+                    });
+                }
+            </script>
+        
+<div class="article-slider" id="random-articles-slider"></div>
+
+<script src="makaleler.js"></script>
+<script>
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function showRandomArticles() {
+    const slider = document.getElementById('random-articles-slider');
+    if (!slider) return;
+    slider.innerHTML = "";
+    let articles = shuffleArray([...articlesData]);
+    articles.slice(0, 6).forEach(article => {
+        const div = document.createElement('div');
+        div.className = "article";
+        div.innerHTML = `
+            <img src="${article.img}" alt="${article.title}">
+            <h3>${article.title}</h3>
+            <a href="${article.pdf}" target="_blank">Devamını Oku</a>
+        `;
+        slider.appendChild(div);
+    });
+}
+document.addEventListener("DOMContentLoaded", showRandomArticles);
+</script>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Sosyal Medya Bölümü -->
+                <div class="social-section">
+                    <h4>Sosyal Medya</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/rmzn.ozdmr_" target="_blank" class="social-icon">
+                            <img src="instagram.png" alt="Instagram"><span>Instagram</span>
+                        </a><br>
+                        <a href="https://www.facebook.com/nutri_life" target="_blank" class="social-icon">
+                            <img src="facebook.png" alt="Facebook"><span>Facebook</span>
+                        </a><br>
+                        <a href="https://www.twitter.com/nutri_life" target="_blank" class="social-icon">
+                            <img src="twitter.png" alt="Twitter"><span>Twitter</span>
+                        </a><br>
+                    </div>
+                </div>
+                <!-- İletişim Bölümü -->
+                <div class="contact-section">
+                    <h4>İletişim</h4>
+                    <p>Telefon: +90 555 123 45 67</p>
+                    <p>E-posta: info@nutrilife.com</p>
+                    <p>Adres: Erzurum, Türkiye</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

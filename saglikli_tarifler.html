@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sağlıklı Tarifler</title>
+    <link rel="stylesheet" href="saglikli_tarifler.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>NutriLife</h1>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <form class="header-search-form" action="#" method="get" onsubmit="return false;">
+                        <input id="searchInput" type="text" class="header-search-input" placeholder="Yemek ara..." name="q" autocomplete="off" />
+                        <button type="submit" class="header-search-btn">
+                            <img src="img/arama.png" alt="Ara" class="search-icon" />
+                        </button>
+                    </form>
+                </li>
+                <li><a href="indexx.html">Ana Sayfa</a></li>
+                <li><a href="beslenme_programlari.html">Beslenme Programları</a></li>
+                <li><a href="makaleler.html">Makaleler</a></li>
+                <li><a href="hesaplama_araclari.html">Hesaplama Araçları</a></li>
+                <li><a href="saglikli_tarifler.html">Sağlıklı Tarifler</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="intro">
+            <h2>Lezzetli ve Sağlıklı Tarifler</h2>
+            <p>
+                Sağlıklı beslenmek, hayatınıza enerji ve mutluluk katar! Bu sayfada; pratik hazırlanabilen, dengeli ve doğal malzemelerle dolu, aynı zamanda damak tadınıza da hitap eden tarifler bulabilirsiniz.<br>
+                Hafif atıştırmalıklardan doyurucu ana yemeklere, fit tatlılardan renkli salatalara kadar birçok farklı öneri ile sağlıklı yaşamı lezzetle buluşturuyoruz.<br>
+                Haydi, yeni tarifler keşfedin ve sofranıza sağlık katın!
+            </p>
+        </section>
+        <section class="tarifler-grid" id="tariflerGrid">
+        </section>
+        <div id="pagination-bottom" class="pagination"></div>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="social-section">
+                    <h4>Sosyal Medya</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/nutri_life" target="_blank" class="social-icon">
+                            <img src="instagram.png" alt="Instagram"><span> Instagram</span>
+                        </a>
+                        <a href="https://www.facebook.com/nutri_life" target="_blank" class="social-icon">
+                            <img src="facebook.png" alt="Facebook"><span> Facebook</span>
+                        </a>
+                        <a href="https://www.twitter.com/nutri_life" target="_blank" class="social-icon">
+                            <img src="twitter.png" alt="Twitter"><span> Twitter</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-section">
+                    <h4>İletişim</h4>
+                    <p>Telefon: +90 555 123 45 67</p>
+                    <p>E-posta: info@nutrilife.com</p>
+                    <p>Adres: Erzurum, Türkiye</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+    // Tarif listesi
+    const tarifler = [
+    { title: "Yulaflı Pankek", img: "img/tarif1.jpg", link: "tarif/tarif1.html" },
+    { title: "Avokadolu Salata", img: "img/tarif2.jpg", link: "tarif/tarif2.html" },
+    { title: "Chia Tohumlu Puding", img: "img/tarif3.jpg", link: "tarif/tarif3.html" },
+    { title: "Sebzeli Omlet", img: "img/tarif4.jpg", link: "tarif/tarif4.html" },
+    { title: "Mercimek Köftesi", img: "img/tarif5.jpg", link: "tarif/tarif5.html" },
+    { title: "Kinoa Tabule", img: "img/tarif6.jpg", link: "tarif/tarif6.html" },
+    { title: "Fırında Havuç Cipsi", img: "img/tarif7.jpg", link: "tarif/tarif7.html" },
+    { title: "Yoğurtlu Kabak Salatası", img: "img/tarif8.jpg", link: "tarif/tarif8.html" },
+    { title: "Fırında Kıtır Nohut", img: "img/tarif9.jpg", link: "tarif/tarif9.html" },
+    { title: "Muzlu Yulaf Lapası", img: "img/tarif10.jpg", link: "tarif/tarif10.html" },
+    { title: "Fırında Kabak Mücver", img: "img/tarif11.jpg", link: "tarif/tarif11.html" },
+    { title: "Hurmalı Enerji Topları", img: "img/tarif12.jpg", link: "tarif/tarif12.html" },
+    { title: "Avokadolu Humus", img: "img/tarif13.jpg", link: "tarif/tarif13.html" },
+    { title: "Şekersiz Fıstık Ezmeli Bar", img: "img/tarif14.jpg", link: "tarif/tarif14.html" },
+    { title: "Kahvaltılık Tofu Scramble", img: "img/tarif15.jpg", link: "tarif/tarif15.html" },
+    { title: "Kabaklı Fırın Omlet", img: "img/tarif16.jpg", link: "tarif/tarif16.html" },
+    { title: "Mercimekli Kısır", img: "img/tarif17.jpg", link: "tarif/tarif17.html" },
+    { title: "Yoğurtlu Semizotu Salatası", img: "img/tarif18.jpg", link: "tarif/tarif18.html" },
+    { title: "Fırında Sebzeli Mücver Topları", img: "img/tarif19.jpg", link: "tarif/tarif19.html" },
+    { title: "Kinoalı Sebze Salatası", img: "img/tarif20.jpg", link: "tarif/tarif20.html" },
+    { title: "Kırmızı Pancarlı Yoğurtlu Dip Sos", img: "img/tarif21.jpg", link: "tarif/tarif21.html" },
+    { title: "Hafif Tavuklu Kinoa Salatası", img: "img/tarif22.jpg", link: "tarif/tarif22.html" },
+    { title: "Fırında Baharatlı Nohut", img: "img/tarif23.jpg", link: "tarif/tarif23.html" },
+    { title: "Zencefilli Havuç Çorbası", img: "img/tarif24.jpg", link: "tarif/tarif24.html" },
+    { title: "Zeytinyağlı Enginar", img: "img/tarif25.jpg", link: "tarif/tarif25.html" },
+    { title: "Köz Patlıcanlı Yoğurtlu Salata", img: "img/tarif26.jpg", link: "tarif/tarif26.html" },
+    { title: "Yeşil Mercimekli Bulgur Salatası", img: "img/tarif27.jpg", link: "tarif/tarif27.html" },
+    { title: "Kabak Spagetti (Zoodles)", img: "img/tarif28.jpg", link: "tarif/tarif28.html" },
+    { title: "Nohutlu Kabak Köftesi", img: "img/tarif29.jpg", link: "tarif/tarif29.html" },
+    { title: "Kırmızı Mercimekli Sebze Çorbası", img: "img/tarif30.jpg", link: "tarif/tarif30.html" },
+    { title: "Kinoalı Sebze Graten", img: "img/tarif31.jpg", link: "tarif/tarif31.html" },
+    { title: "Fırında Sebzeli Somon", img: "img/tarif32.jpg", link: "tarif/tarif32.html" },
+    { title: "Tavuklu Karabuğday Salatası", img: "img/tarif33.jpg", link: "tarif/tarif33.html" },
+    { title: "Karnabahar Kısırı", img: "img/tarif34.jpg", link: "tarif/tarif34.html" }
+];
+
+    const TARIFLER_PER_PAGE = 20;
+    let currentPage = 1;
+    let filteredTarifler = [...tarifler];
+
+    function renderTarifler(page = 1) {
+        const grid = document.getElementById("tariflerGrid");
+        grid.innerHTML = "";
+        const start = (page - 1) * TARIFLER_PER_PAGE;
+        const end = start + TARIFLER_PER_PAGE;
+        const pageTarifler = filteredTarifler.slice(start, end);
+
+        if (pageTarifler.length === 0) {
+            grid.innerHTML = "<p style='text-align:center;width:100%;color:#888;padding:30px 0'>Uygun tarif bulunamadı.</p>";
+            return;
+        }
+
+        pageTarifler.forEach(tarif => {
+            const div = document.createElement("div");
+            div.className = "tarif-card";
+            div.setAttribute("data-title", tarif.title);
+            div.innerHTML = `
+                <img src="${tarif.img}" alt="${tarif.title}">
+                <h3>${tarif.title}</h3>
+                <a href="${tarif.link}" class="tarif-btn">Tarife Git</a>
+            `;
+            grid.appendChild(div);
+        });
+    }
+
+    function renderPagination(page = 1) {
+        const totalPages = Math.ceil(filteredTarifler.length / TARIFLER_PER_PAGE);
+        const pagDiv = document.getElementById("pagination-bottom");
+        pagDiv.innerHTML = "";
+        if (totalPages <= 1) return;
+
+        // Önceki butonu
+        const prevBtn = document.createElement("button");
+        prevBtn.textContent = "Önceki";
+        prevBtn.className = "nav-btn";
+        prevBtn.disabled = page === 1;
+        prevBtn.onclick = () => changePage(page - 1);
+        pagDiv.appendChild(prevBtn);
+
+        // Sayfa numaraları
+        for (let i = 1; i <= totalPages; i++) {
+            if (
+                i === 1 || i === totalPages ||
+                (i >= page - 1 && i <= page + 1) ||
+                (page <= 3 && i <= 4) ||
+                (page >= totalPages - 2 && i >= totalPages - 3)
+            ) {
+                const btn = document.createElement("button");
+                btn.textContent = i;
+                if (i === page) btn.classList.add("active");
+                btn.onclick = () => changePage(i);
+                pagDiv.appendChild(btn);
+            } else if (
+                (i === 2 && page > 4) ||
+                (i === totalPages - 1 && page < totalPages - 3)
+            ) {
+                const ellipsis = document.createElement("span");
+                ellipsis.textContent = "...";
+                pagDiv.appendChild(ellipsis);
+            }
+        }
+
+        // Sonraki butonu
+        const nextBtn = document.createElement("button");
+        nextBtn.textContent = "Sonraki";
+        nextBtn.className = "nav-btn";
+        nextBtn.disabled = page === totalPages;
+        nextBtn.onclick = () => changePage(page + 1);
+        pagDiv.appendChild(nextBtn);
+    }
+
+    function changePage(page) {
+        const totalPages = Math.ceil(filteredTarifler.length / TARIFLER_PER_PAGE);
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        currentPage = page;
+        renderTarifler(page);
+        renderPagination(page);
+        window.scrollTo({top: 0, behavior: "smooth"});
+    }
+
+    function filterTariflerArama() {
+        const query = document.getElementById("searchInput").value.trim().toLowerCase();
+        filteredTarifler = tarifler.filter(t => t.title.toLowerCase().includes(query));
+        changePage(1); // Filtre sonrası ilk sayfaya dön
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Arama için event
+        const searchInput = document.getElementById("searchInput");
+        searchInput.addEventListener("input", filterTariflerArama);
+        searchInput.form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            filterTariflerArama();
+        });
+        // İlk yükleme
+        changePage(1);
+    });
+    </script>
+</body>
+</html>

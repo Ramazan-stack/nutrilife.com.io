@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriLife - Sağlıklı Beslenme</title>
+    <link rel="stylesheet" href="beslenme_programlari.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <div class="logo">
+            <h1>NutriLife</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="indexx.html">Ana Sayfa</a></li>
+                <li><a href="beslenme_programlari.html">Beslenme Programları</a></li>
+                <li><a href="makaleler.html">Makaleler</a></li>
+                <li><a href="hesaplama_araclari.html">Hesaplama Araçları</a></li>
+                <li><a href="saglikli_tarifler.html">Sağlıklı Tarifler</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <button class="toggle-sidebar-btn" aria-label="Kategoriler">
+        <img src="img/categories.png" alt="Kategoriler" style="width:32px; height:32px;">
+    </button>
+    
+    <div class="content">
+        <aside class="sidebar">
+            <h3>Kategoriler</h3>
+            <button class="accordion">Hedefe Göre Beslenme Programları</button>
+            <div class="panel">
+                <a href="#">Kilo Vermek İçin Beslenme</a>
+                <a href="#">Kilo Almak İçin Beslenme</a>
+                <a href="#">Kas Yapımı ve Sporcu Beslenmesi</a>
+                <a href="#">Sağlıklı Yaşam ve Formda Kalma</a>
+            </div>
+            <button class="accordion">Özel Durumlar İçin Beslenme</button>
+            <div class="panel">
+                <a href="#">Diyabet Hastaları İçin Beslenme</a>
+                <a href="#">Tansiyon ve Kalp Sağlığı Beslenmesi</a>
+                <a href="#">Hamileler ve Emziren Anneler İçin Beslenme</a>
+                <a href="#">Çocuk ve Ergen Beslenmesi</a>
+                <a href="#">50+ Yaş Grubu Beslenmesi</a>
+            </div>
+            <button class="accordion">Beslenme Tarzına Göre Programlar</button>
+            <div class="panel">
+                <a href="#">Vejetaryen Beslenme</a>
+                <a href="#">Vegan Beslenme</a>
+                <a href="#">Ketojenik Diyet</a>
+                <a href="#">Akdeniz Diyeti</a>
+                <a href="#">Paleo Diyeti</a>
+                <a href="#">Glutensiz Beslenme</a>
+            </div>
+            <button class="accordion">Detoks ve Yenilenme Programları</button>
+            <div class="panel">
+                <a href="#">3 Günlük Detoks Planı</a>
+                <a href="#">7 Günlük Anti-inflamatuar Beslenme</a>
+                <a href="#">Bağışıklık Güçlendirici Beslenme Planı</a>
+            </div>
+        </aside>
+
+    
+        <main class="main-content">
+            <h1>Beslenme Programları</h1>
+            <div class="bilgi-kutusu">
+                <h2>Beslenme Programları Hakkında Bilgilendirme</h2>
+                <ul>
+                    <li>
+                        <b>Farklı Beslenme Programlarını Keşfedin:</b> Hedefinize ve yaşam tarzınıza uygun birçok farklı beslenme programını inceleyebilirsiniz.
+                    </li>
+                    <li>
+                        <b>Kategorilere Göre Hızlı Gezinme:</b> Sol menüdeki kategorilerden; kilo verme, kilo alma, sporcu beslenmesi, özel durumlar, ve çeşitli beslenme tarzlarına göre hazırlanmış programlara kolayca ulaşabilirsiniz.
+                    </li>
+                    <li>
+                        <b>Her Güne Özel Planlar:</b> Seçtiğiniz programa tıkladığınızda haftanın her günü için örnek menüler ve öneriler görüntülenir.
+                    </li>
+                    <li>
+                        <b>Önemli Kurallar ve İpuçları:</b> Her program sonunda, sağlıklı ve dengeli beslenme için dikkat edilmesi gereken önemli kuralları bulabilirsiniz.
+                    </li>
+                    <li>
+                        <b>Bilgi Edinin ve Uygulayın:</b> Programa başlamadan önce, programın detaylarını ve size uygun olup olmadığını dikkatlice okuyun. Sağlığınız için gerektiğinde bir uzmana danışmayı unutmayın.
+                    </li>
+                </ul>
+                <p style="margin-top:1em;"><i>Sağlıklı ve bilinçli beslenmenin keyfini çıkarmanız dileğiyle!</i></p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Accordion işlevselliği
+        const accordions = document.querySelectorAll(".accordion");
+        accordions.forEach((accordion) => {
+            accordion.addEventListener("click", function () {
+                accordions.forEach((item) => {
+                    if (item !== this) {
+                        item.classList.remove("active");
+                        item.nextElementSibling.style.display = "none";
+                    }
+                });
+
+                this.classList.toggle("active");
+                const panel = this.nextElementSibling;
+                panel.style.display = panel.style.display === "block" ? "none" : "block";
+            });
+        });
+
+  
+        const toggleSidebarBtn = document.querySelector(".toggle-sidebar-btn");
+        const sidebar = document.querySelector(".sidebar");
+
+        toggleSidebarBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("visible");
+
+            if (sidebar.classList.contains("visible")) {
+                toggleSidebarBtn.style.left = "265px"; 
+            } else {
+                toggleSidebarBtn.style.left = "15px"; 
+            }
+        });
+    </script>
+    <script src="beslenme_programlari.js"></script>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Sosyal Medya Bölümü -->
+                <div class="social-section">
+                    <h4>Sosyal Medya</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/rmzn.ozdmr_" target="_blank" class="social-icon">
+                            <img src="instagram.png" alt="Instagram"><span> Instagram</span>
+                        </a>
+                        <a href="https://www.facebook.com/nutri_life" target="_blank" class="social-icon">
+                            <img src="facebook.png" alt="Facebook"><span> Facebook</span>
+                        </a>
+                        <a href="https://www.twitter.com/nutri_life" target="_blank" class="social-icon">
+                            <img src="twitter.png" alt="Twitter"><span> Twitter</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- İletişim Bölümü -->
+                <div class="contact-section">
+                    <h4>İletişim</h4>
+                    <p>Telefon: +90 555 123 45 67</p>
+                    <p>E-posta: info@nutrilife.com</p>
+                    <p>Adres: Erzurum, Türkiye</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

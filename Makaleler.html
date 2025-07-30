@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriLife | Makaleler</title>
+    <link rel="stylesheet" href="makaleler.css">
+    <script src="makaleler.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>NutriLife</h1>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <form class="header-search-form" action="#" method="get" onsubmit="return false;">
+                        <input id="searchInput" type="text" class="header-search-input" placeholder="Makale ara..." name="q" autocomplete="off" />
+                        <button type="submit" class="header-search-btn">
+                            <img src="img/arama.png" alt="Ara" class="search-icon" />
+                        </button>
+                    </form>
+                </li>
+                <li><a href="indexx.html">Ana Sayfa</a></li>
+                <li><a href="beslenme_programlari.html">Beslenme Programları</a></li>
+                <li><a href="makaleler.html">Makaleler</a></li>
+                <li><a href="hesaplama_araclari.html">Hesaplama Araçları</a></li>
+                <li><a href="saglikli_tarifler.html">Sağlıklı Tarifler</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="articles" id="articles">
+        </section>
+        <div class="pagination" id="pagination"></div>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="social-section">
+                    <h4>Sosyal Medya</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/nutri_life" target="_blank" class="social-icon">
+                            <img src="instagram.png" alt="Instagram"><span> Instagram</span>
+                        </a>
+                        <a href="https://www.facebook.com/nutri_life" target="_blank" class="social-icon">
+                            <img src="facebook.png" alt="Facebook"><span> Facebook</span>
+                        </a>
+                        <a href="https://www.twitter.com/nutri_life" target="_blank" class="social-icon">
+                            <img src="twitter.png" alt="Twitter"><span> Twitter</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-section">
+                    <h4>İletişim</h4>
+                    <p>Telefon: +90 555 123 45 67</p>
+                    <p>E-posta: info@nutrilife.com</p>
+                    <p>Adres: Erzurum, Türkiye</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+    const articlesPerPage = 21;
+    let filteredArticles = [...articlesData];
+
+    // Makaleleri göster
+    function displayArticles(page) {
+        const articlesContainer = document.getElementById('articles');
+        articlesContainer.innerHTML = '';
+        const start = (page - 1) * articlesPerPage;
+        const end = start + articlesPerPage;
+        const pageArticles = filteredArticles.slice(start, end);
+
+        pageArticles.forEach(article => {
+            const item = document.createElement('article');
+            item.innerHTML = `
+                <img src="${article.img}" alt="${article.title}" class="article-img">
+                <h3 class="article-title">${article.title}</h3>
+                <p>${article.desc}</p>
+                <a href="${article.link}">Devamını Oku</a>
+            `;
+            articlesContainer.appendChild(item);
+        });
+    }
+
+    // Sayfa geçiş butonları
+    function setupPagination(totalArticles, currentPage) {
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+        const totalPages = Math.ceil(totalArticles / articlesPerPage);
+
+        if (totalPages <= 1) return;
+
+        // Önceki buton
+        if (currentPage > 1) {
+            const prevBtn = document.createElement('button');
+            prevBtn.textContent = '« Önceki';
+            prevBtn.onclick = () => goToPage(currentPage - 1);
+            pagination.appendChild(prevBtn);
+        }
+        // Sayfa numaraları
+        for (let i = 1; i <= totalPages; i++) {
+            const btn = document.createElement('button');
+            btn.textContent = i;
+            if (i === currentPage) btn.classList.add('active');
+            btn.onclick = () => goToPage(i);
+            pagination.appendChild(btn);
+        }
+        // Sonraki buton
+        if (currentPage < totalPages) {
+            const nextBtn = document.createElement('button');
+            nextBtn.textContent = 'Sonraki »';
+            nextBtn.onclick = () => goToPage(currentPage + 1);
+            pagination.appendChild(nextBtn);
+        }
+    }
+
+    function goToPage(page) {
+        displayArticles(page);
+        setupPagination(filteredArticles.length, page);
+    }
+
+    // Arama fonksiyonu
+    document.addEventListener("DOMContentLoaded", function() {
+        goToPage(1);
+
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function() {
+            const filter = this.value.trim().toLowerCase();
+            filteredArticles = articlesData.filter(article =>
+                article.title.toLowerCase().includes(filter)
+            );
+            goToPage(1);
+        });
+    });
+    </script>
+</body>
+</html>
